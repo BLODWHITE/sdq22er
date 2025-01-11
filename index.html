@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLODWHITE OFFICIAL</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    /* Giriş Efekti */
+    #intro {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    #intro h1 {
+      font-size: 120px;
+      color: white;
+      font-family: Arial, sans-serif;
+      animation: fadeInOut 3s forwards, glow 1s infinite alternate;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.5); }
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px white, 0 0 20px red; }
+      100% { text-shadow: 0 0 20px yellow, 0 0 30px orange; }
+    }
+    #content {
+      display: none;
+    }
+    .main-title {
+      text-align: center;
+      font-size: 60px;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 20px 0;
+      animation: zoomIn 3s ease-in-out;
+    }
+    @keyframes zoomIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .video-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      color: white;
+    }
+    .video-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    iframe {
+      width: 200px;
+      height: 110px;
+      margin-right: 10px;
+    }
+    .video-title {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    /* Sekmeler */
+    .tabs {
+      display: flex;
+      background-color: #333;
+      padding: 10px;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+    .tab {
+      margin-right: 15px;
+      padding: 10px;
+      color: white;
+      background-color: #444;
+      cursor: pointer;
+    }
+    .tab:hover {
+      background-color: #555;
+    }
+    .tab.active {
+      background-color: #f00;
+    }
+    .support-section, .sunucular-section {
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #444;
+    }
+    .support-section a, .sunucular-section a {
+      color: yellow;
+      text-decoration: none;
+    }
+    .hidden-content {
+      display: none;
+    }
+    /* Kanal Arka Planları */
+    #ana-kanal-content {
+      background: url('ana-kanal-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    #tolboxlar-content {
+      background: url('tolboxlar-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    #destek-content {
+      background: url('destek-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    #sunucular-content {
+      background: url('sunucular-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      }, 3000); // 3 saniye sonra siteye geçiş
+    };
+
+    function setActiveTab(tab) {
+      var tabs = document.querySelectorAll('.tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+
+      // Sekme geçişi
+      const tabName = tab.textContent;
+      const contentSections = document.querySelectorAll('.hidden-content');
+      contentSections.forEach(function(section) {
+        section.style.display = 'none'; // Hepsini gizle
+      });
+
+      // Seçilen sekmeye ait içerikleri göster
+      const activeSection = document.getElementById(tabName.toLowerCase() + '-content');
+      if (activeSection) {
+        activeSection.style.display = 'block';
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Giriş Ekranı -->
+  <div id="intro">
+    <h1>BLOD</h1>
+  </div>
+
+  <!-- Ana İçerik -->
+  <div id="content">
+    <h1 class="main-title">BLODWHITE OFFICIAL</h1>
+    
+    <!-- Sekmeler (Kanallar) -->
+    <div class="tabs">
+      <div class="tab active" onclick="setActiveTab(this)">Ana Kanal</div>
+      <div class="tab" onclick="setActiveTab(this)">Tolboxlar</div>
+      <div class="tab" onclick="setActiveTab(this)">Destek</div>
+      <div class="tab" onclick="setActiveTab(this)">Sunucularımız</div>
+    </div>
+    
+    <!-- Ana Kanal -->
+    <div class="video-section hidden-content" id="ana-kanal-content" style="display:block;">
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">Video Başlığı 1</div>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">Video Başlığı 2</div>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID3" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">Video Başlığı 3</div>
+      </div>
+    </div>
+    
+    <!-- Destek -->
+    <div class="support-section hidden-content" id="destek-content">
+      <p>DESTEK İÇİN:</p>
+      <p>Discord: <a href="https://discord.com" target="_blank">blodwhite_16389</a></p>
+      <p>Telegram: <a href="https://telegram.org" target="_blank">@Blodwhite</a></p>
+    </div>
+
+    <!-- Tolboxlar -->
+    <div class="video-section hidden-content" id="tolboxlar-content">
+      <div class="video-item">
+        <iframe src="https://drive.google.com/uc?export=view&id=FILE_ID1" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">Dosya 1</div>
+      </div>
+      <div class="video-item">
+        <iframe src="https://drive.google.com/uc?export=view&id=FILE_ID2" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">Dosya 2</div>
+      </div>
+    </div>
+
+    <!-- Sunucularımız -->
+    <div class="sunucular-section hidden-content" id="sunucular-content">
+      <h2>OFFICIAL</h2>
+      <p>Discord sunucumuzda sanal öğretiyoruz python, termux vb.</p>
+      <p>Linki: <a href="https://discord.gg/r3F7Hc3j" target="_blank">https://discord.gg/r3F7Hc3j</a></p>
+      <p>Telegramda hack öğretiyoruz:</p>
+      <p>Link 1: <a href="https://t.me/noxrate" target="_blank">https://t.me/noxrate</a></p>
+      <p>Link 2: <a href="https://t.me/sledeyes" target="_blank">https://t.me/sledeyes</a></p>
+      <p>Sledeyesde 0'dan, Noxrate bilenler için.</p>
+    </div>
+  </div>
+</body>
+</html>
